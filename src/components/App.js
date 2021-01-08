@@ -13,8 +13,6 @@ const App = () => {
 
   const errorMessage = useSelector((state) => state.error);
 
-  console.log(errorMessage);
-
   return (
     <div>
       <Menu fixed="top" inverted>

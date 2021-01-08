@@ -1,4 +1,3 @@
-// import _ from "lodash";
 import catsApi from "../apis/catsApi";
 
 export const FETCH_CATS = "FETCH_CATS";

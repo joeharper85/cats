@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCats, fetchFavourites, fetchVotes } from "../actions";
 import { ImageCard } from "./ImageCard";
 
-import "./CatList.css";
 import { Card } from "semantic-ui-react";
 
 export const CatList = (props) => {
