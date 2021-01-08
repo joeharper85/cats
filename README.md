@@ -13,6 +13,12 @@ npm start
 
 in the repo root dir
 
+The app is also deployed to github pages at
+
+https://joeharper85.github.io/cats/
+
+Due to how github pages likes to deploy things the initial url doesn't quite meet spec with the '/cats' endpoint. Clicking around the app you will see that the endpoints are correct. If you run locally the end points will be the specified '/' and '/upload' from the get go.
+
 ### Known issues
 
 Only displaying 3 cats in a row max. Initially I was rolling my own grid system to dynamically change as width of the page was reduced which was working well, but then noticed Semantic has a Card.Group component which should do the same. Unfortunately it doesn't seem to be able to handle the idea of a maximum number of columns other than the default of 3, only a fixed number, which then scales very poorly as viewport size changes. In an ideal world I would back that change out and finish rolling my own grid system, or see if the Card.Group max size can be dynamically manipulated, but it'd be easy to slip down a rabbit hole and not resurface for a while so I thought best to get what I ahve over to you.
