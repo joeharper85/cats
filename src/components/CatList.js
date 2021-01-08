@@ -41,7 +41,7 @@ export const CatList = (props) => {
   return (
     <div>
       {cats.length > 0 ? (
-        <Card.Group itemsPerRow={4} style={{ padding: "20px" }}>
+        <Card.Group stackable={true} style={{ padding: "5rem" }}>
           {cats.map((cat) => (
             <ImageCard
               key={cat.id}

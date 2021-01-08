@@ -35,7 +35,7 @@ export const ImageCard = (props) => {
 
   return (
     <Card>
-      <Image src={url} />
+      <Image src={url} size="medium" />
       <Card.Content extra>
         {favourite ? (
           <Button

@@ -1,6 +1,6 @@
 import { FETCH_FAVOURITES } from "../actions";
 
-export default (state = { favourites: [] }, action) => {
+export default (state = [], action) => {
   switch (action.type) {
     case FETCH_FAVOURITES:
       return action.payload;
