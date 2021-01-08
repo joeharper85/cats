@@ -1,7 +1,7 @@
 
 ## Cat gallery
 
-This has been implemented using React, Redux and Router. Axios has been used for handling API calls, and styling/layout is taken care of by Semantic React UI.
+This has been implemented using React, Redux and Router. Axios has been used for handling API calls, and styling/layout is taken care of by Semantic React UI. Developed using VSC and Prettier for formatting.
 
 ### To build and run
 
