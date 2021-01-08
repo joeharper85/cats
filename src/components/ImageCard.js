@@ -1,29 +1,69 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Button, Card, Image, Label } from "semantic-ui-react";
+import { useDispatch } from "react-redux";
+import {
+  favouriteCat,
+  unfavouriteCat,
+  voteCat,
+  UP_VOTE,
+  DOWN_VOTE,
+} from "../actions";
 
 export const ImageCard = (props) => {
-  const [spans, setSpans] = useState();
+  const { url, id } = props.image;
+  const { favourite, votes } = props;
 
-  const imageRef = React.useRef();
+  const dispatch = useDispatch();
 
-  const setupSpans = () => {
-    const height = imageRef.current.clientHeight;
+  const calculateScore = () => {
+    let score = 0;
+    votes.forEach((vote) => {
+      switch (vote.value) {
+        case 0:
+          score--;
+          break;
+        case 1:
+          score++;
+          break;
+        default:
+        // Do nothing
+      }
+    });
 
-    const spans = Math.ceil(height / 10);
-
-    setSpans({ spans });
+    return score;
   };
 
-  useEffect(() => {
-    imageRef.current.addEventListener("load", setupSpans);
-  });
-
-  const { original_filename, url } = props.image;
-
-  console.log(props);
-
   return (
-    <div style={{ gridRowEnd: `span ${spans}` }}>
-      <img ref={imageRef} src={url} alt={original_filename} />
-    </div>
+    <Card>
+      <Image src={url} />
+      <Card.Content extra>
+        {favourite ? (
+          <Button
+            icon="heart"
+            color="purple"
+            onClick={() => dispatch(unfavouriteCat(favourite.id))}
+          />
+        ) : (
+          <Button
+            icon="heart outline"
+            color="purple"
+            onClick={() => dispatch(favouriteCat(id))}
+          />
+        )}
+        <span style={{ float: "right" }}>
+          <Label>Rating: {calculateScore()}</Label>
+          <Button
+            icon="thumbs up"
+            color="purple"
+            onClick={() => dispatch(voteCat(id, UP_VOTE))}
+          />
+          <Button
+            icon="thumbs down"
+            color="purple"
+            onClick={() => dispatch(voteCat(id, DOWN_VOTE))}
+          />
+        </span>
+      </Card.Content>
+    </Card>
   );
 };
