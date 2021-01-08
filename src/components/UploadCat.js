@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import catsApi from "../apis/catsApi";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Label, Input } from "semantic-ui-react";
 
 export const UploadCat = () => {
+  const [uploadEnabled, setUploadEnabled] = useState(false);
   const fileInput = React.useRef();
 
   const onUploadSubmit = async (term) => {
@@ -19,10 +20,19 @@ export const UploadCat = () => {
     <div>
       <Form onSubmit={onUploadSubmit}>
         <Form.Field>
-          <label>Select a cat</label>
-          <input type="file" ref={fileInput} />
+          <Label>Upload a cat in .jpg or .png format</Label>
+          <Input
+            type="file"
+            ref={fileInput}
+            accept=".jpg,.png"
+            onChange={(e, { value }) =>
+              value ? setUploadEnabled(true) : setUploadEnabled(false)
+            }
+          />
         </Form.Field>
-        <Button type="submit">Upload</Button>
+        <Button type="submit" color="purple" disabled={!uploadEnabled}>
+          Upload
+        </Button>
       </Form>
     </div>
   );
